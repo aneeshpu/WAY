@@ -6,6 +6,7 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Location;
 import android.location.LocationManager;
+import android.util.Log;
 
 public class GeoLocationService {
 
@@ -20,13 +21,16 @@ public class GeoLocationService {
 
 		final LocationManager locationService = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 		final List<String> allProviders = locationService.getAllProviders();
-
+		System.setProperty("log.tag.WAY", "DEBUG");
 		for (String provider : allProviders) {
 
+			Log.d("way", String.format("---provider:%s",provider));
+			
 			final Location lastKnownLocation = locationService.getLastKnownLocation(provider);
 			final List<Address> fromLocation = myGeoCoder.getFromLocation(context, lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude(), 1);
 
 			final String address = makeAddress(fromLocation);
+			Log.d("way", address);
 			if (address != null)
 				return address;
 		}
@@ -47,6 +51,6 @@ public class GeoLocationService {
 	}
 
 	private String makeAddress(Address address) {
-		return address.toString();
+		return address.getAddressLine(0);
 	}
 }
