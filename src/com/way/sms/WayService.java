@@ -16,6 +16,6 @@ public class WayService {
 		if (!waySms.isWayRequest())
 			return false;
 
-		return smsService.send(waySms.from(), geoLocationService.getCurrentGeoLocation(context));
+		return smsService.send(waySms.from(), geoLocationService.getCurrentGeoLocation(context).toString());
 	}
 }
