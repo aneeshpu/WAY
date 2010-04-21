@@ -22,10 +22,6 @@ public class GeoLocationService {
 		return askAllProviders(context, locationService, locationService.getAllProviders());
 	}
 
-	private GeoLocation askGPS(Context context, LocationManager locationService) {
-		return askProvider(context, locationService, "gps");
-	}
-
 	private GeoLocation askAllProviders(Context context, final LocationManager locationService, final List<String> allProviders) {
 		for (String provider : allProviders) {
 
