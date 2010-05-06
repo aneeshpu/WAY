@@ -14,7 +14,7 @@ class WaySms {
 
 	public boolean isWayRequest() {
 		final String messageBody = smsMessage.getMessageBody();
-		final Pattern pattern = Pattern.compile("[wW]here *are *you *[\\p{Punct}]*");
+		final Pattern pattern = Pattern.compile("[wW]here *[aA]?r?e? *[yY]?o?u? *[\\p{Punct}]*|WAY");
 		return pattern.matcher(messageBody).matches();
 	}
 
