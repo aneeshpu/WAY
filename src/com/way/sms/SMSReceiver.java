@@ -19,7 +19,7 @@ public class SMSReceiver extends BroadcastReceiver {
 		Bundle bundle = intent.getExtras();
 		if(bundle == null)return;
 		
-		wayService.reply(makeWaySMS(bundle, context), context);
+		wayService.reply(makeWaySMS(bundle, context));
 	}
 
 	private WaySms makeWaySMS(Bundle bundle, Context context) {

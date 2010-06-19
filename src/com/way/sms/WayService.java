@@ -1,6 +1,5 @@
 package com.way.sms;
 
-import android.content.Context;
 
 public class WayService {
 
@@ -10,7 +9,7 @@ public class WayService {
 		this.smsService = smsService;
 	}
 
-	public boolean reply(WaySms waySms, Context context) {
+	public boolean reply(WaySms waySms) {
 		if (!waySms.isWayRequest())
 			return false;
 
