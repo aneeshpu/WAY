@@ -25,7 +25,7 @@ class WaySms {
 	}
 
 	public String generateReply() {
-		return null;
+		final GeoLocation currentGeoLocation = locator.getCurrentGeoLocation();
+		return currentGeoLocation.toString();
 	}
-
 }
