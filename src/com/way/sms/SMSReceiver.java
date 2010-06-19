@@ -10,7 +10,7 @@ public class SMSReceiver extends BroadcastReceiver {
 	private final WayService wayService;
 
 	public SMSReceiver(){
-		wayService = new WayService(new SMSService(), new GeoLocationService(new MyGeoCoder()));
+		wayService = new WayService(new SMSService());
 	}
 
 	@Override
@@ -19,11 +19,11 @@ public class SMSReceiver extends BroadcastReceiver {
 		Bundle bundle = intent.getExtras();
 		if(bundle == null)return;
 		
-		wayService.reply(makeWaySMS(bundle), context);
+		wayService.reply(makeWaySMS(bundle, context), context);
 	}
 
-	private WaySms makeWaySMS(Bundle bundle) {
-		return new WaySMSFactory().create((Object[])bundle.get("pdus"));
+	private WaySms makeWaySMS(Bundle bundle, Context context) {
+		return new WaySMSFactory().create((Object[])bundle.get("pdus"), context);
 	}
 
 }
