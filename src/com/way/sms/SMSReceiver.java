@@ -22,7 +22,7 @@ public class SMSReceiver extends BroadcastReceiver {
 		wayService.reply(makeWaySMS(bundle, context));
 	}
 
-	private WaySms makeWaySMS(Bundle bundle, Context context) {
+	private RegularTextMessage makeWaySMS(Bundle bundle, Context context) {
 		return new WaySMSFactory().create((Object[])bundle.get("pdus"), context);
 	}
 

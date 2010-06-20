@@ -9,7 +9,7 @@ public class WayService {
 		this.smsService = smsService;
 	}
 
-	public boolean reply(WaySms waySms) {
+	public boolean reply(RegularTextMessage waySms) {
 		if (!waySms.isWayRequest())
 			return false;
 
