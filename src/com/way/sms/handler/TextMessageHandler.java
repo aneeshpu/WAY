@@ -15,7 +15,7 @@ public class TextMessageHandler implements WayHandler {
 		this.wayHandler = wayHandler;
 	}
 
-	public void handle() {
+	public void handle() {		
 		if(textMessage.isWayRequest())
 			sendReply(textMessage.from(),textMessage.generateReply());
 		

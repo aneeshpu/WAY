@@ -4,11 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.telephony.SmsMessage;
+import android.util.Log;
 
 public class FacebookTextMessage implements TextMessage {
 
 	private static final Pattern WAY_MESSAGE_FORMAT = Pattern
-			.compile("([a-zA-Z ]*) Wrote on your Facebook Wall:\n([a-zA-Z ]*)\nReply to post on ([a-zA-Z]*)'s wall.\nReply \"sub\" to subscribe to ([a-zA-Z]*)'s status");
+			.compile("([a-zA-Z ]*) wrote on your Facebook Wall:\n([a-zA-Z ]*)\n*Reply to post on ([a-zA-Z]*)'s wall.\n\nReply \"sub\" to subscribe to ([a-zA-Z]*)'s status.");
 	private final SmsMessage smsMessage;
 	private final WayRequest wayRequest;
 	private final Locator locator;
@@ -22,6 +23,7 @@ public class FacebookTextMessage implements TextMessage {
 	@Override
 	public boolean isWayRequest() {
 		final Matcher matcher = matcher();
+		Log.d("WAY", String.format("FacebookTextMessage:matcher.matches(): %s, smsMessage:%s", matcher.matches(), smsMessage.getMessageBody()));
 		return matcher.matches() && wayRequest.isWayRequest(wallPost(matcher));
 	}
 
@@ -39,7 +41,7 @@ public class FacebookTextMessage implements TextMessage {
 	public String generateReply() {
 		final Matcher matcher = matcher();
 		matcher.matches();
-		return String.format("Wall %s %s", sender(matcher), lastKnownGeoLocation(locator).toString());
+		return String.format("Wall %s", lastKnownGeoLocation(locator).toString());
 	}
 
 	private GeoLocation lastKnownGeoLocation(Locator locator) {
