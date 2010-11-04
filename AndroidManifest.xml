@@ -8,6 +8,20 @@
 				<action android:name="android.provider.Telephony.SMS_RECEIVED" />
 			</intent-filter>
 		</receiver>
+		
+		<service android:name="xmpp.XMPPService">
+			<intent-filter>
+				<action android:name="com.way.xmpp.XMPP_SERVICE" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</service>
+		
+		<activity android:name="xmpp.XMPPSetup">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"></action>
+				<category android:name="android.intent.category.LAUNCHER"></category>
+			</intent-filter>
+		</activity>
 
 	</application>
 	<uses-permission android:name="android.permission.RECEIVE_SMS" />

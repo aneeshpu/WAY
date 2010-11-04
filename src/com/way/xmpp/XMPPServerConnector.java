@@ -29,8 +29,8 @@ public class XMPPServerConnector {
 	}
 
 	public boolean login(String username, String password) {
-		ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(server, port, domain);
-		XMPPConnection xmppConnection = new XMPPConnection(connectionConfiguration);
+		final ConnectionConfiguration connectionConfiguration = new ConnectionConfiguration(server, port, domain);
+		final XMPPConnection xmppConnection = new XMPPConnection(connectionConfiguration);
 
 		try {
 			xmppConnection.connect();
@@ -46,8 +46,10 @@ public class XMPPServerConnector {
 				@Override
 				public void processPacket(Packet packet) {
 					Message message = (Message) packet;
-
-					new WayChatMessageHandler(new XMPPChatMessage(message, new WayRequest(), locator)).handle();
+					
+					Log.d("WAY", String.format("Received message %s", message.getBody()));
+					new WayXMPPChatMessageHandler(new XMPPChatMessage(message, new WayRequest(), locator), new XMPPMessageSender(xmppConnection))
+							.handle();
 				}
 			}, messageFilter);
 			Log.d("WAY", "Registered a packet listener");
