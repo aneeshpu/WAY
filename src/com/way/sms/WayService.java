@@ -1,21 +1,18 @@
 package com.way.sms;
 
-import android.content.Context;
 
 public class WayService {
 
-	private GeoLocationService geoLocationService;
 	private SMSService smsService;
 
-	public WayService(SMSService smsService, GeoLocationService geoLocationService) {
+	public WayService(SMSService smsService) {
 		this.smsService = smsService;
-		this.geoLocationService = geoLocationService;
 	}
 
-	public boolean reply(WaySms waySms, Context context) {
+	public boolean reply(RegularTextMessage waySms) {
 		if (!waySms.isWayRequest())
 			return false;
 
-		return smsService.send(waySms.from(), geoLocationService.getCurrentGeoLocation(context).toString());
+		return smsService.send(waySms.from(), waySms.generateReply());
 	}
 }

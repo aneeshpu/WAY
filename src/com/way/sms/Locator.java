@@ -6,18 +6,19 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Location;
 import android.location.LocationManager;
-import android.util.Log;
 
-public class GeoLocationService {
+public class Locator {
 
 	private MyGeoCoder myGeoCoder;
+	private final Context context;
 
-	public GeoLocationService(MyGeoCoder myGeoCoder) {
+	public Locator(MyGeoCoder myGeoCoder, Context context) {
 		this.myGeoCoder = myGeoCoder;
+		this.context = context;
 
 	}
 
-	public GeoLocation getCurrentGeoLocation(Context context) {
+	public GeoLocation getCurrentGeoLocation() {
 		final LocationManager locationService = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 		return askAllProviders(context, locationService, locationService.getAllProviders());
 	}
@@ -34,7 +35,7 @@ public class GeoLocationService {
 	}
 
 	private GeoLocation askProvider(Context context, final LocationManager locationService, String provider) {
-		Log.d("way", String.format("---provider:%s", provider));
+//		Log.d("way", String.format("---provider:%s", provider));
 
 		final Location lastKnownLocation = locationService.getLastKnownLocation(provider);
 		if (lastKnownLocation == null)
