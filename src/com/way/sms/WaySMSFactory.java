@@ -15,10 +15,10 @@ public class WaySMSFactory {
 		final Locator locator = new Locator(new MyGeoCoder(), context);
 		final WayRequest wayRequest = new WayRequest();
 		final SMSService smsService = new SMSService();
-		
+
 		final RegularTextMessage regularTextMessage = new RegularTextMessage(smsMessage, locator, wayRequest);
 		final FacebookTextMessage facebookTextMessage = new FacebookTextMessage(smsMessage, wayRequest, locator);
-		
+
 		final TextMessageHandler facebookMessageHandler = new TextMessageHandler(facebookTextMessage, smsService, new DefaultTextMessageHandler());
 		return new TextMessageHandler(regularTextMessage, smsService, facebookMessageHandler);
 	}
