@@ -15,7 +15,7 @@ public class XMPPSetup extends Activity {
 		
 		Intent intent = new Intent();
 		intent.setAction("com.way.xmpp.XMPP_SERVICE");
-		this.startActivity(intent);
+		this.startService(intent);
 	}
 
 	
