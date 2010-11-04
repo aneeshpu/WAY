@@ -2,6 +2,7 @@ package com.way.xmpp;
 
 import org.jivesoftware.smack.packet.Message;
 
+import com.way.sms.Locator;
 import com.way.sms.TextMessage;
 import com.way.sms.WayRequest;
 
@@ -9,10 +10,12 @@ public class XMPPChatMessage implements TextMessage {
 
 	private final Message message;
 	private final WayRequest wayRequest;
+	private final Locator locator;
 
-	public XMPPChatMessage(Message message, WayRequest wayRequest) {
+	public XMPPChatMessage(Message message, WayRequest wayRequest, Locator locator) {
 		this.message = message;
 		this.wayRequest = wayRequest;
+		this.locator = locator;
 	}
 
 	@Override
@@ -23,14 +26,12 @@ public class XMPPChatMessage implements TextMessage {
 
 	@Override
 	public String reply() {
-		// TODO Auto-generated method stub
-		return null;
+		return locator.getCurrentGeoLocation().toString();
 	}
 
 	@Override
 	public String from() {
-		// TODO Auto-generated method stub
-		return null;
+		return message.getFrom();
 	}
 
 }

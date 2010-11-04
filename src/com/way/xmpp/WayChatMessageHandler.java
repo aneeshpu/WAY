@@ -6,13 +6,19 @@ import com.way.sms.handler.WayHandler;
 
 public class WayChatMessageHandler implements WayHandler {
 
+	private final XMPPChatMessage xmppChatMessage;
+
 	public WayChatMessageHandler(XMPPChatMessage xmppChatMessage) {
-		// TODO Auto-generated constructor stub
+		this.xmppChatMessage = xmppChatMessage;
 	}
 
 	@Override
 	public void handle() {
-		// TODO Auto-generated method stub
+		if(xmppChatMessage.isWayRequest())
+			sendReply(xmppChatMessage.from(),xmppChatMessage.reply());
+	}
+
+	private void sendReply(String from, String reply) {
 		
 	}
 
