@@ -13,6 +13,6 @@ public class WayService {
 		if (!waySms.isWayRequest())
 			return false;
 
-		return smsService.send(waySms.from(), waySms.generateReply());
+		return smsService.send(waySms.from(), waySms.reply());
 	}
 }

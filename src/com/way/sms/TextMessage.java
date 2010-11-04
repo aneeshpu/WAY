@@ -4,7 +4,7 @@ public interface TextMessage {
 
 	boolean isWayRequest();
 
-	String generateReply();
+	String reply();
 
 	String from();
 

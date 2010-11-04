@@ -27,11 +27,6 @@ public class FacebookTextMessage implements TextMessage {
 		return matcher.matches() && wayRequest.isWayRequest(wallPost(matcher));
 	}
 
-	private String messageToPrint() {
-		System.out.println("Actual method call");
-		return "Actual method call";
-	}
-
 	private Matcher matcher() {
 		final String messageBody = smsMessage.getMessageBody();
 		final Matcher matcher = WAY_MESSAGE_FORMAT.matcher(messageBody);
@@ -43,7 +38,7 @@ public class FacebookTextMessage implements TextMessage {
 	}
 
 	@Override
-	public String generateReply() {
+	public String reply() {
 		final Matcher matcher = matcher();
 		matcher.matches();
 		return String.format("Wall %s", lastKnownGeoLocation(locator).toString());

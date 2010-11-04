@@ -24,7 +24,7 @@ class RegularTextMessage implements TextMessage {
 		return smsMessage.getOriginatingAddress();
 	}
 
-	public String generateReply() {
+	public String reply() {
 		final GeoLocation currentGeoLocation = locator.getCurrentGeoLocation();
 		return currentGeoLocation.toString();
 	}

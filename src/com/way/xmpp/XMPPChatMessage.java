@@ -22,7 +22,7 @@ public class XMPPChatMessage implements TextMessage {
 	}
 
 	@Override
-	public String generateReply() {
+	public String reply() {
 		// TODO Auto-generated method stub
 		return null;
 	}
