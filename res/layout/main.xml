@@ -6,15 +6,15 @@
 		android:layout_height="wrap_content" android:text="@string/username" />
 
 	<EditText android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="@string/hello"
-		android:id="@+id/xmpp_username" />
+		android:layout_height="wrap_content" android:id="@+id/xmpp_username" />
 
 	<TextView android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:text="@string/password"/>
+		android:layout_height="wrap_content" android:text="@string/password" />
 
 	<EditText android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="@string/hello"
-		android:id="@+id/xmpp_password" />
+		android:layout_height="wrap_content" android:id="@+id/xmpp_password" />
 
+	<Button android:id="@+id/login" android:text="@string/login"
+		android:layout_width="fill_parent" android:layout_height="wrap_content" />
 
 </LinearLayout>
