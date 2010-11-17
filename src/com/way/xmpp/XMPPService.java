@@ -28,8 +28,8 @@ public class XMPPService extends Service {
 		String username = intent.getExtras().getString("username");
 		String password = intent.getExtras().getString("password");
 
-		Log.i("WAY", String.format("The username is %s", username));
-		Log.i("WAY", String.format("The password is %s", password));
+		Log.d("WAY", String.format("The username is %s", username));
+		Log.d("WAY", String.format("The password is %s", password));
 
 		XMPPServerConnector xmppServerConnector = new XMPPServerConnector("talk.google.com", 5222, "gmail.com", new Locator(new MyGeoCoder(), this));
 		xmppServerConnector.login(username, password);
