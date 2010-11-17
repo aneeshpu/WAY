@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World!</string>
     <string name="app_name">WAY</string>
-    <string name="username">handle</string>
-    <string name="password">secret code</string>
+    <string name="username">login</string>
+    <string name="password">password</string>
     <string name="login">Login</string>
 </resources>
